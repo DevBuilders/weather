@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
@@ -28,7 +29,7 @@ public class WeatherServiceTest {
     @Autowired
     private MockRestServiceServer server;
 
-    @Value("weather.api-key")
+    @Value("${weather.api-key}")
     private String weatherApiKey;
 
     @Before
@@ -41,7 +42,7 @@ public class WeatherServiceTest {
     public void testGetWeather() {
         String expectedUri = "http://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=" + weatherApiKey;
         this.server.expect(requestTo(expectedUri)).andRespond(withSuccess(weatherJson, MediaType.APPLICATION_JSON));
-
+        assertEquals(weatherService.getWeather(), "Mist");
     }
 
 }
