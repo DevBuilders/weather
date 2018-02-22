@@ -17,6 +17,10 @@ management:
 #logging:
   #level:
     #org.springframework.security: DEBUG
+
+weather:
+  api-key: d4b42d12400cbf224b872836ce192659
+
 kroger:
   eaf:
     version: 4.5.0
