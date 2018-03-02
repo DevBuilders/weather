@@ -42,7 +42,7 @@ public class WeatherServiceTest {
     public void testGetWeather() {
         String expectedUri = "http://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=" + weatherApiKey;
         this.server.expect(requestTo(expectedUri)).andRespond(withSuccess(weatherJson, MediaType.APPLICATION_JSON));
-        assertEquals(weatherService.getWeather(), "Mist");
+        assertEquals(weatherService.getWeather(), "mist");
     }
 
 }

@@ -24,8 +24,11 @@ public class WeatherService {
     }
 
     public String getWeather() {
-        HashMap map = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=" + weatherApiKey, HashMap.class);
+        HashMap map = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=" +
+                weatherApiKey, HashMap.class);
         List<Map> weather = (List<Map>)map.get("weather");
-        return weather.get(0).get("main").toString();
+        Object city = map.get("name");
+        System.out.println(city);
+        return weather.get(0).get("description").toString();
     }
 }
